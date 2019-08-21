@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -6,6 +6,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="TextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+    <style name="CardStyle" parent="Theme.AppCompat.Light">
+        <item name="cardCornerRadius">2dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="contentPaddingBottom">20dp</item>
+        <item name="contentPaddingTop">20dp</item>
+        <item name="contentPaddingLeft">12dp</item>
+        <item name="contentPaddingRight">12dp</item>
+        <item name="cardBackgroundColor">@color/colorBackgroundCard</item>
     </style>
 
 </resources>

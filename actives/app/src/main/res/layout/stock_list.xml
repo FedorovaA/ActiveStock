@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        style="@style/CardStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtTicker"
+                style="@style/TextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textTicker"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textTicker"
+                style="@style/TextStyle"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="Тикер:"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textChanges"
+                style="@style/TextStyle"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="Изм:"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTicker" />
+
+            <TextView
+                android:id="@+id/textPrice"
+                style="@style/TextStyle"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="Цена:"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textChanges" />
+
+            <TextView
+                android:id="@+id/textPerc"
+                style="@style/TextStyle"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="Изм в %: "
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textPrice" />
+
+            <TextView
+                android:id="@+id/textCompany"
+                style="@style/TextStyle"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="Компания: "
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textPerc" />
+
+            <TextView
+                android:id="@+id/txtCompanyName"
+                style="@style/TextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textCompany"
+                app:layout_constraintTop_toBottomOf="@+id/txtChangesPercentage" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                style="@style/TextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textPrice"
+                app:layout_constraintTop_toBottomOf="@+id/txtChanges" />
+
+            <TextView
+                android:id="@+id/txtChangesPercentage"
+                style="@style/TextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textPerc"
+                app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
+
+            <TextView
+                android:id="@+id/txtChanges"
+                style="@style/TextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="TextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textChanges"
+                app:layout_constraintTop_toBottomOf="@+id/txtTicker" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
