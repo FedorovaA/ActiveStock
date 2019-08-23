@@ -1,27 +1,31 @@
-package com.example.actives.data;
+package com.example.actives.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Angelina Fedorova
+ */
 
 public class ActiveStockData {
     @SerializedName("mostActiveStock")
     @Expose
-    private ArrayList<MostActiveStock> mostActiveStocks = null;
+    private List<MostActiveStock> mostActiveStocks = null;
 
     public ActiveStockData() {
     }
 
-    public ActiveStockData(ArrayList<MostActiveStock> mostActiveStocks)  {
+    public ActiveStockData(List<MostActiveStock> mostActiveStocks)  {
         this.mostActiveStocks = mostActiveStocks;
     }
 
-    public ArrayList<MostActiveStock> getMostActiveStocks() {
+    public List<MostActiveStock> getMostActiveStocks() {
         return mostActiveStocks;
     }
 
-    public void setMostActiveStocks(ArrayList<MostActiveStock> mostActiveStocks) {
+    public void setMostActiveStocks(List<MostActiveStock> mostActiveStocks) {
         this.mostActiveStocks = mostActiveStocks;
     }
 }

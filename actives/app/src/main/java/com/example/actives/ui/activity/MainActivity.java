@@ -1,4 +1,4 @@
-package com.example.actives.activity;
+package com.example.actives.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.actives.R;
-import com.example.actives.adapter.ActiveStockAdapter;
-import com.example.actives.data.ActiveStockData;
-import com.example.actives.presenter.ActiveStockPresenter;
-import com.example.actives.view.IActiveStockView;
+import com.example.actives.ui.adapter.ActiveStockAdapter;
+import com.example.actives.ui.presenter.ActiveStockPresenter;
+import com.example.actives.data.model.MostActiveStock;
+import com.example.actives.ui.view.IActiveStockView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements IActiveStockView {
-    private Button btnParse;
+    private Button btnParse, btnShow;
 
     private ActiveStockPresenter activeStockPresenter;
 
@@ -31,10 +33,11 @@ public class MainActivity extends AppCompatActivity implements IActiveStockView 
         setContentView(R.layout.activity_main);
 
         btnParse = findViewById(R.id.btnParse);
+        btnShow = findViewById(R.id.btnShow);
         rvInfo = findViewById(R.id.rvInfo);
 
 
-        activeStockPresenter = new ActiveStockPresenter();
+        activeStockPresenter = new ActiveStockPresenter(this);
         activeStockPresenter.setView(this);
 
         activeStockAdapter = new ActiveStockAdapter(this);
@@ -47,11 +50,22 @@ public class MainActivity extends AppCompatActivity implements IActiveStockView 
             activeStockPresenter.parseActiveStock();
         });
 
+        btnShow.setOnClickListener(v -> {
+            activeStockPresenter.showActiveStock();
+        });
+
     }
 
     @Override
-    public void loadActiveStock(ActiveStockData activeStockData) {
-        activeStockAdapter.setStockDataList(activeStockData);
+    protected void onDestroy() {
+        activeStockAdapter = null;
+        activeStockPresenter.onDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    public void loadActiveStock(List<MostActiveStock> mostActiveStocks) {
+        activeStockAdapter.setStockDataList(mostActiveStocks);
         activeStockAdapter.notifyDataSetChanged();
     }
 

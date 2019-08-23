@@ -1,4 +1,4 @@
-package com.example.actives.adapter;
+package com.example.actives.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,13 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.actives.R;
-import com.example.actives.data.ActiveStockData;
-import com.example.actives.data.MostActiveStock;
+import com.example.actives.data.model.MostActiveStock;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+/**
+ * Created by Angelina Fedorova
+ */
 
 public class ActiveStockAdapter extends RecyclerView.Adapter<ActiveStockAdapter.ViewHolder> {
-    private ActiveStockData activeStockData = new ActiveStockData();
+    private List<MostActiveStock> mostActiveStocks = null;
 
-    Context context;
+    private Context context;
 
     public ActiveStockAdapter() {
     }
@@ -24,12 +31,15 @@ public class ActiveStockAdapter extends RecyclerView.Adapter<ActiveStockAdapter.
     public ActiveStockAdapter(Context context) {
 
         this.context = context;
+
+        mostActiveStocks = new ArrayList<>();
     }
 
-    public void setStockDataList (ActiveStockData activeStockData) {
-        this.activeStockData = activeStockData;
+    public void setStockDataList (List<MostActiveStock> mostActiveStocks) {
+        this.mostActiveStocks = mostActiveStocks;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i){
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.stock_list, viewGroup, false);
@@ -39,17 +49,17 @@ public class ActiveStockAdapter extends RecyclerView.Adapter<ActiveStockAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final MostActiveStock mostActiveStock = activeStockData.getMostActiveStocks().get(position);
+        final MostActiveStock mostActiveStock = mostActiveStocks.get(position);
         holder.txtTicker.setText(mostActiveStock.getTicker());
-        holder.txtPrice.setText(mostActiveStock.getPrice().toString());
-        holder.txtChanges.setText(mostActiveStock.getChanges().toString());
+        holder.txtPrice.setText(String.format(Locale.getDefault(),"%.2f",mostActiveStock.getPrice()));
+        holder.txtChanges.setText(String.format(Locale.getDefault(),"%.2f",mostActiveStock.getChanges()));
         holder.txtChangesPercentage.setText(mostActiveStock.getChangesPercentage());
         holder.txtCompanyName.setText(mostActiveStock.getCompanyName());
     }
 
     @Override
     public int getItemCount() {
-        return activeStockData.getMostActiveStocks() != null ? activeStockData.getMostActiveStocks().size() : 0;
+        return mostActiveStocks != null ? mostActiveStocks.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
